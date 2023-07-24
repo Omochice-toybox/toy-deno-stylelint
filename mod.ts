@@ -4,17 +4,9 @@ import {
   Command,
   EnumType,
 } from "https://deno.land/x/cliffy@v1.0.0-rc.2/command/mod.ts";
-import { LintResult } from "./type.ts";
+import { lint } from "./stylelint.ts";
 
 const formatter = new EnumType<string>(Object.keys(stylelint.formatters));
-
-async function execute(config: unknown): Promise<LintResult[]> {
-  const { results } = await stylelint.lint({
-    config,
-    files: "./**/*.css",
-  });
-  return results;
-}
 
 if (import.meta.main) {
   const { options, args } = await new Command()
@@ -34,6 +26,6 @@ if (import.meta.main) {
     .parse(Deno.args);
 
   const { default: config } = await import(resolve(options.config));
-  const results = await execute(config);
-  console.log(stylelint.formatters[options.formatter](results));
+  const results = await lint(args, config);
+  console.log(stylelint.formatters[options.formatter]!(results));
 }
