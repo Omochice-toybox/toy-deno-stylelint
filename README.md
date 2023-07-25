@@ -43,7 +43,7 @@ export default {
 ## Installation
 
 ```shell
-$ deno install -A https://pax.deno.dev/Omochice/deno-stylelint-wrapper/cli.ts -n stylelint
+$ deno install -A https://pax.deno.dev/Omochice-toybox/deno-stylelint-wrapper/cli.ts -n stylelint
 ```
 
 ## Reference
