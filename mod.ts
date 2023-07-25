@@ -17,7 +17,7 @@ function normalizePath(pathLike: string): URL {
 
 if (import.meta.main) {
   const { options, args } = await new Command()
-    .name("sample")
+    .name("stylelint")
     .type("formatter", formatter)
     .arguments("<files...:string>")
     .option("-c, --config <config:string>", "path to configure", {
